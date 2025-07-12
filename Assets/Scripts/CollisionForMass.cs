@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class CollisionForA : MonoBehaviour
+public class CollisionForMass : MonoBehaviour
 {
     [SerializeField] float delayBeforeDestruction = 0.5f;
-    [SerializeField] GameObject mass;
+    [SerializeField] GameObject velocity;
 
     string correct_answer = "Scalar";
     string incorrect_answer = "Vector";
@@ -17,7 +17,7 @@ public class CollisionForA : MonoBehaviour
 
             mySpriteRenderer.color = Color.green;
 
-            Invoke("SetMassActive", delayBeforeDestruction);
+            Invoke("SetVelocityActive", delayBeforeDestruction);
             Invoke("DestroyGameObject", delayBeforeDestruction);
 
 
@@ -28,9 +28,9 @@ public class CollisionForA : MonoBehaviour
         }
     }
 
-    private void SetMassActive()
+    private void SetVelocityActive()
     {
-        mass.SetActive(true);
+        velocity.SetActive(true);
     }
 
     private void DestroyGameObject()
@@ -43,12 +43,12 @@ public class CollisionForA : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

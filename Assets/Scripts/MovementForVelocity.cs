@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovementForA : MonoBehaviour
+public class MovementForVelocity : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] InputAction thrust;
@@ -11,9 +11,16 @@ public class MovementForA : MonoBehaviour
     [SerializeField] float rotationStrength = 100f;
 
     Rigidbody2D myRigidBody;
+    SpriteRenderer mySpriteRenderer;
+    MonoBehaviour background;
 
     bool controllable = true;
-    
+
+    void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -27,13 +34,18 @@ public class MovementForA : MonoBehaviour
 
     void Start()
     {
-        
+        background = FindFirstObjectByType<Background>();
+        mySpriteRenderer = background.gameObject.GetComponent<SpriteRenderer>();
+        mySpriteRenderer.color = Color.grey;
+        Debug.Log("Start of mass");
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         if (controllable)
         {
             StartThrusting();
@@ -59,9 +71,10 @@ public class MovementForA : MonoBehaviour
     {
         if (thrust.IsPressed())
         {
+
             myRigidBody.AddRelativeForce(Vector3.up * Time.fixedDeltaTime * thrustStrength);
         }
     }
 
-    
+
 }
