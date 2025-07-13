@@ -14,6 +14,9 @@ public class Jump : MonoBehaviour
     }
     void Start()
     {
+        //Debug.Log("Start()");
+        //Camera myCamera = FindFirstObjectByType<Camera>();
+        //myCamera.backgroundColor = Color.blue;
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 
